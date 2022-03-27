@@ -108,4 +108,5 @@ After that done we see as follow
 ```
 git config --global core.editor "code --wait"
 git remote -v
+git ls-remote
 ```
