@@ -1,13 +1,13 @@
-#Comandi GIT 🏗️
-- To check the version 
+# Git Commands 🏗️
+In order to check if we allready have git on our system type:
 ```
 git --version
 ```
-- Initialize a repository into a repository folder
+To initialize a repository into a folder
 ```
 git init
 ```
-- Show the status of the file in our repository
+Show the status of our repository
 ```
 git status
 ```
@@ -64,7 +64,7 @@ git commit --amend
 - In order to remove file from the git add . we need to set a .gitignore file which will contains all the file, extensione and folder that we need to avoid to commit, also we can apply a rule to allow a single file of a specified denied extension.
 <hr />
 
-###Branch 🦺
+### Branch 🦺
 - Graphical rapresentation of our branches configuration
 ```
 git log --all --decorate --oneline --graph
@@ -104,3 +104,8 @@ git merge fix
 
 After that done we see as follow
 ![Merge](https://i.ibb.co/s6C5D5d/Capture.png)
+
+```
+git config --global core.editor "code --wait"
+git remote -v
+```
