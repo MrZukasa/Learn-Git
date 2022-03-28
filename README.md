@@ -73,11 +73,9 @@ git reset or git reset --soft or git reset --hard
 ***NOTICE:*** we can use `git reset --[parameter]` with the id of the commit or the `HEAD` and the position of the commit that we want to refer to, like so: `git reset --[parameter] HEAD~1` in case we need 1 position before the `HEAD` pointer, or `git reset --[parameter] HEAD~2` in case we need to go back of 2 commits before the `HEAD`.
 
 <hr />
-- Change the commit message
-```
-git commit --amend
-```
-- In order to remove file from the git add . we need to set a .gitignore file which will contains all the file, extensione and folder that we need to avoid to commit, also we can apply a rule to allow a single file of a specified denied extension.
+
+- In order to remove file from the `git add .` we need to set a `.gitignore` file which will contains all the file, extensione and folder that we need to avoid to commit, also we can apply a rule to allow a single file of a specified denied extension.
+
 <hr />
 
 ### Branch 🦺
