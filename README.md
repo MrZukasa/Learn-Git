@@ -110,25 +110,42 @@ In order to move in between branches we need to move the `HEAD`, and to do that 
 git checkout [branch name]
 ```
 
+After that we've made some changes to the files in every branches, we may want to merge them back into the main branch.
+To do that we need to use 
+```
+git merge
+```
 
-In the image below we can see that there are 3 different branches.
-Two of them already have some changes into the same files, as we can see in the 'split' branch rapresentation
-
-
-we can also inspect the differences between two branches by using:
+Before to do that we can check the difference between the two branches by using
 ```
 git diff [first branch]..[second branch]
 ```
 
-In order to merge one of those branch to the master one we need to:
+In order to merge those branch one in an other we need to:
 ```
-git checkout master
-git merge fix
+git checkout [first branch]
+git merge [second branch]
 ```
-After that done we see as follow
+The merge can be make in a different way:
+- **_FastForward_** by moving ahead the branch `master` to match the last commit of the `fix` branch.
+- ***Three Way Merge***In case you move the `HEAD` in a commit that is not a direct parent of the branch that we want to merge, git, will verify the commit that is shared in between branches and compare it to the next commit in order to check if there will be some issue.
+
+In order to see which branch was merged we can use
+```
+git branch --merged
+```
+If we don't need anymore a specific branch we can remove it by using:
+```
+git branch -d [branch name]
+```
+***NOTICE:*** that if the branch was not already merged we can force the delete with uppercase `-D` parameter
+
+In case we want to undo some merge we can use
+```
+git merge --abort
+```
 
 <hr/>
-
 
 ### Commands that need to be inserted into the list
 Command that allows the user to use VSCode as editor for the commit message 
