@@ -200,6 +200,17 @@ If we want to clone one online existing repo we need to use:
 ```
 git clone [URL]
 ```
+<hr />
+
+## Fork a someone else repository :smile:
+Once that we have forked the repository into our account we can easily clone it as a normal repo with `git clone [URL]`.
+Once we have made some changes to the repo, we can contribute to the original repo by asking to the owner the permission to contribute with our new forked repo.
+We can do that directly from GitHub.
+
+If we want (and the owner allow us) we can add the remote URL of the original repo into the `origin` of our forked repo
+```
+git remote add [alias] [URL of the original repo]
+```
 
 <hr />
 
