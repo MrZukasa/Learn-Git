@@ -145,7 +145,7 @@ In case we want to undo some merge we can use
 git merge --abort
 ```
 
-If we wont to move and in the same time create a branch we can use
+If we want to move and in the same time create a branch we can use
 ```
 git checkout -b [new branch name]
 ```
@@ -163,14 +163,48 @@ git push -u origin master
 ```
 <hr />
 
+In order to see the list of our Remote origin, we can type:
+```
+g remote
+```
+this will show the origin and, if we add `-v` parameter we can even see the address.
+
+In order to inspect the Remote origin and check if our Local or our Remote is *up to date* and other info, we can simply type:
+```
+git remote show origin
+```
+
+if we want to rename our Remote server:
+```
+git remote rename origin [new name]
+```
+if we want to remove our Remote server:
+```
+git remote remove origin
+```
 <hr />
+
+In order to get the files from our Remote repo to our Local repo, we need to type:
+```
+git fetch or git pull
+```
+With the command `git fetch` we can get all the changes from the Remote repo, but only the changes non the files, to get even the files we need to merge our local branch with the origin by usin `git merge origin/master`. 
+
+Otherwise we can do all of that in one command, get the info and the sync from the Remote repo and also the files by using:
+```
+git pull
+```
+<hr />
+
+If we want to clone one online existing repo we need to use:
+```
+git clone [URL]
+```
+
+<hr />
+
 ### Commands that need to be inserted into the list
 Command that allows the user to use VSCode as editor for the commit message 
 ```
 git config --global core.editor "code --wait"
-```
-
-Show if the Local Ref. is up to date by comparing the Local branch and the Remote branch.
-```
-git remote show origin
 ```
