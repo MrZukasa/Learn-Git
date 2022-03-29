@@ -145,8 +145,25 @@ In case we want to undo some merge we can use
 git merge --abort
 ```
 
+If we wont to move and in the same time create a branch we can use
+```
+git checkout -b [new branch name]
+```
 <hr/>
 
+### Use Remote server as repository store GitHub
+
+Once that we made a GitHub account we can set the origin address with:
+```
+git remote add origin [address]
+```
+To upload our local repository to the server provided by GitHub we need to type:
+```
+git push -u origin master
+```
+<hr />
+
+<hr />
 ### Commands that need to be inserted into the list
 Command that allows the user to use VSCode as editor for the commit message 
 ```
