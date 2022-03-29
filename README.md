@@ -79,31 +79,41 @@ git reset or git reset --soft or git reset --hard
 <hr />
 
 ### Branch 🦺
-- Graphical rapresentation of our branches configuration
+The common way to use a branch is to keep the stable version of the software as a main branch, and all the other features that are experimental or that can comport some bug fixing or even make the software to be unstable, are destinated to be stored in some side branch.
+
+The `master` name is made by initialize the folder to our repository.
+
+The branch in the beginning is a simple label that identifies the last commit of that specific branch.
+
+In order to see a graphical rapresentation of our branches configuration we can use such a command
 ```
 git log --all --decorate --oneline --graph
 ```
-In order to avoid type everytime all this command in our system we can add all of this into an Alias by using our powershell:
+Also we can create an Alias to avoid to type everytime all that.
+I've made a little bit different commands to do the same thing, just a bit more clear.
+Also i've placed those two commands as alias
 
-![Alias](https://i.ibb.co/tKGJ2N6/Untitled.png)
+```PowerShell
+hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
+llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
+```
 
-- To create a branch we use:
+To create a branch we use:
 ```
 git branch [name]
 ```
-- To see the existing branches:
-```
-git branch
-```
-- To move the HEAD in between the branches we need to use:
+In order to see all branches we type just `git branch` with no arguments.
+Every new branch that is created will point to the last commit, so where the `HEAD` is.
+
+In order to move in between branches we need to move the `HEAD`, and to do that we can use:
 ```
 git checkout [branch name]
 ```
-<hr />
+
 
 In the image below we can see that there are 3 different branches.
 Two of them already have some changes into the same files, as we can see in the 'split' branch rapresentation
-![Branch](https://i.ibb.co/6ZRKjZR/Capture.png)
+
 
 we can also inspect the differences between two branches by using:
 ```
@@ -115,12 +125,18 @@ In order to merge one of those branch to the master one we need to:
 git checkout master
 git merge fix
 ```
-
 After that done we see as follow
-![Merge](https://i.ibb.co/s6C5D5d/Capture.png)
 
+<hr/>
+
+
+### Commands that need to be inserted into the list
+Command that allows the user to use VSCode as editor for the commit message 
 ```
 git config --global core.editor "code --wait"
-git remote -v
-git ls-remote
+```
+
+Show if the Local Ref. is up to date by comparing the Local branch and the Remote branch.
+```
+git remote show origin
 ```
