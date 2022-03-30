@@ -78,7 +78,7 @@ git reset or git reset --soft or git reset --hard
 
 <hr />
 
-### Branch 🦺
+## Branch 🦺
 The common way to use a branch is to keep the stable version of the software as a main branch, and all the other features that are experimental or that can comport some bug fixing or even make the software to be unstable, are destinated to be stored in some side branch.
 
 The `master` name is made by initialize the folder to our repository.
@@ -151,7 +151,7 @@ git checkout -b [new branch name]
 ```
 <hr/>
 
-### Use Remote server as repository store GitHub
+## Use Remote server as repository store GitHub 🏊🏻‍♂️
 
 Once that we made a GitHub account we can set the origin address with:
 ```
@@ -202,19 +202,30 @@ git clone [URL]
 ```
 <hr />
 
-## Fork a someone else repository :smile:
+## Fork a someone else repository 👨🏼‍🏭
 Once that we have forked the repository into our account we can easily clone it as a normal repo with `git clone [URL]`.
-Once we have made some changes to the repo, we can contribute to the original repo by asking to the owner the permission to contribute with our new forked repo.
+
+After that we have made some changes to the repo, we can contribute to the original repo by asking to the owner the permission to contribute with our new forked repo.
 We can do that directly from GitHub.
 
 If we want (and the owner allow us) we can add the remote URL of the original repo into the `origin` of our forked repo
 ```
 git remote add [alias] [URL of the original repo]
 ```
+Every time that someone push something in the original repo, we can easily sync our forked repo in order to keep it up to date:
+
+```
+git fetch [alias] and git merge [alias]/[branch]
+```
+or we directly pull:
+```
+git pull [alias] [branch]
+```
+once that our Local repo is up to date we can simply `git push` those changes to the Remote repo (the forked one):
 
 <hr />
 
-### Commands that need to be inserted into the list
+## Bonus 🛀🏼
 Command that allows the user to use VSCode as editor for the commit message 
 ```
 git config --global core.editor "code --wait"
