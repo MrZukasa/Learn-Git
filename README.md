@@ -1,135 +1,138 @@
-# 🏗️ Git Commands
+# 🏗️ Comandi Git di uso comune
 
-- In order to check if we already have git on our system type &rarr; `git --version`
+- Per controllare se abbiamo già installato Git sul nostro sistema si usa &rarr; `git --version`
 
-- To initialize a repository into a folder that we are going to use as repository &rarr; `git init`
+- Per inizializzare una repository all'interno di una cartella &rarr; `git init`
 
-- Create a new file in the repository &rarr; `touch [filename.extension]`
+- Creare un nuovo file all'interno di una repo &rarr; `touch [filename.extension]`
 
-- Show the file contents &rarr; `cat [filename.extension]`
+- Vedere il contenuto di un file &rarr; `cat [filename.extension]`
 
-- Show the status of our repository &rarr; `git status`
+- Vedere lo status della nostra repository &rarr; `git status`
 
-- Add to the git index (Staging area) all the file or some of them &rarr; `git add .` or `git add [filename.extension]` or `git add [*.extension]`
+- Aggiunge all'index di git (Staging area) tutti o alcuni files &rarr; `git add .` o `git add [nomefile.estensione]` o `git add [*.estensione]`
 
-- To commit the changes use &rarr; `git commit -m "[commit message]" -m "[commit description]"`
+- Per fare una commit &rarr; `git commit -m "[messaggio di commit]" -m "[descrizione del commit]"`
 
-- In order to avoid to use `git add` before the commit we can do something like &rarr; `git commit -am "[commit message]"` where the `-a` parameter stand for 'all'
+- Per evitare di usare `git add` prima di ogni commit, possiamo optare per &rarr; `git commit -am "[messaggio di commit]"` dove il parametro `-a` sta per 'all'.
 
-- Remove file from the index (Staging area) &rarr; `git restore --staged [filename.extension]`
+- Togliere dei file dall'index di git (Staging area) &rarr; `git restore --staged [filename.extension]`
 
-- When we want to see the history of the commits &rarr;`git log`
+- Per vedere lo storico delle varie commits &rarr;`git log`
 
-- See the references of the HEAD file &rarr; `cat .git/HEAD`
+- Vedere il contenuto del file HEAD e quindi sapere dove punta &rarr; `cat .git/HEAD`
 
-- See the commits list in a short way &rarr; `git log --oneline`
+- Vedere lo storico delle commits in maniera più minimale &rarr; `git log --oneline`
 
-- Restore te previus commit instead of the new one by sending a new commit &rarr; `git revert`
+- Recupera i cambiamenti emessi dall'ultima commit facendone una nuova &rarr; `git revert`
 
-- To change the message of the last commit &rarr; `git commit --amend -m "message"`
+- Per cambiare il messaggio dell'ultima commit &rarr; `git commit --amend -m "message"`
 
-- To undo the commit:
+- Per annullare una commit:
   
-  - `git reset` which is _--mixed_ &rarr; this remove the commit and the file in the staging area (default version) &rarr; ***TL:DR: Remove the commit and the stage area***
+  - `git reset` che di default è _--mixed_ &rarr; annulla la commit e rimuove i file dalla Staging Area &rarr; ***TL:DR: Remove the commit and the stage area***
   
-  - `git reset --soft` &rarr; this remove commit and restore the file status to the staging area &rarr; ***TL:DR: Remove the commit***
+  - `git reset --soft` &rarr; rimuove la commit e recupera lo status successivo alla Staging Area &rarr; ***TL:DR: Remove the commit***
   
-  - `git reset --hard` &rarr; this remove the commit and all the added files in the last commit, this will remove the file physically &rarr; ***TL:DR: Remove the commit, the stage area and delete the files!***
+  - `git reset --hard` &rarr; rimuove l'ultima commit e tutti i file aggiunti alla Staging Area, rimuove anche fisicamente i files! &rarr; ***TL:DR: Remove the commit, the stage area and delete the files!***
 
->***NOTICE:*** we can use `git reset --[parameter]` with the id of the commit or the `HEAD` and the position of the commit that we want to refer to, like so: `git reset --[parameter] HEAD~1` in case we need 1 position before the `HEAD` pointer, or `git reset --[parameter] HEAD~2` in case we need to go back of 2 commits before the `HEAD`.
+>***DA NOTARE:*** possiamo usare `git reset --[parametro]` con l'ID della commit o `HEAD` e la posizione temporale della commit al quale vogliamo fare riferimento, così: `git reset --[parametro] HEAD~1` in caso ci riferissimo alla penultima commit `HEAD` o `git reset --[parametro] HEAD~2` in caso volessimo fare riferimento a 2 commit prima della `HEAD`.
 
-In order to remove file from the `git add .` we need to set a `.gitignore` file which will contains all the file, extensione and folder that we need to avoid to commit, also we can apply a rule to allow a single file of a specified denied extension.
+Per evitare che con il comando `git add .` si inseriscano nella Staging Area tutti i file, dobbiamo settare un file `.gitignore` che conterrà tutti i file, le cartelle e le estensioni che vogliamo evitare di committare. Possiamo anche creare delle regole per permettere singoli file di estensioni che vogliamo escludere totalmente.
+```
+*.txt
+!file.txt
+```
 <br/>
 <br/>
 
 ## 🦺 Branch
-The common way to use a branch is to keep the stable version of the software as a main branch, and all the other features that are experimental or that can comport some bug fixing or even make the software to be unstable, are destinated to be stored in some side branch.
+Il modo comune di utilizzare un branch è mantenere la versione stabile del software come branch principale, e tutte le altre funzionalità sperimentali o che possono comportare correzioni di bug o addirittura rendere instabile il software, sono destinate ad essere archiviate in qualche branch laterale.
 
-The `master` name is made by initialize the folder to our repository.
+Il branch `master` ha questo nome che gli viene attribuito dalla prima inizializzazione della nostra repo.
 
-The branch in the beginning is a simple label that identifies the last commit of that specific branch.
+All'inizio il branch è solamente _"un' etichetta"_ che identifica l'ultimo commit di quello specifico branch.
 
-In order to see a graphical rapresentation of our branches configuration we can use such a command &rarr; `git log --all --decorate --oneline --graph`
+Per vedere una rappresentazione grafica dei nostri branches possiamo usare il comando &rarr; `git log --all --decorate --oneline --graph`
 
-Also we can create an Alias to avoid to type everytime all that.
-I've made a little bit different commands to do the same thing, just a bit more clear.
-Also i've placed those two commands as alias
+Possiamo anche usare degli Alias con questi comandi per evitare di doverli scrivere tutte le volte.
+Ho creato due Alias che permettono di fare la stessa cosa ma con un briciolo di chiarezza in più per quello che è il mio gusto personale.
 
 ```PowerShell
 hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
 llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
 ```
 
-- To create a branch we use &rarr; `git branch [name]`
+- Per creare un branch usiamo &rarr; `git branch [nome]`
 
-In order to see all branches we type just `git branch` with no arguments.
-Every new branch that is created will point to the last commit, so where the `HEAD` is.
+Per vedere tutti i branches usiamo `git branch` senza nessun parametro.
+Ogni nuovo branch che viene creato punterà all'ultimo commit, quindi dove punta l'`HEAD`.
 
-- In order to move in between branches we need to move the `HEAD`, and to do that we can use &rarr; `git checkout [branch name]`
+- Per spostarci tra i branches dobbiamo muovere la nostra `HEAD`, per farlo usiamo &rarr; `git checkout [nome branch]`
 
-- After that we've made some changes to the files in every branches, we may want to merge them back into the main branch.
-To do that we need to use &rarr; `git merge`
+- Dopo che abbiamo modificato i files in ogni branch, potremmo volerli riunire sotto il main branch.
+Per farlo possiamo usare &rarr; `git merge`
 
-- Before to do that we can check the difference between the two branches by using &rarr; `git diff [first branch]..[second branch]`
+- Prima di unire i branch possiamo andare a visualizzarne le differenze con il comando &rarr; `git diff [primo branch]..[secondo branch]`
 
-- In order to merge those branch one in an other we need to &rarr; `git checkout [first branch]`
-  then &rarr; `git merge [second branch]`
+- Per unire i branch dobbiamo usare prima &rarr; `git checkout [primo branch]`
+  poi &rarr; `git merge [secondo branch]`
 
-- The merge can be make in a different way:
-  - **_FastForward_** by moving ahead the branch `master` to match the last commit of the `fix` branch.
-  - ***Three Way Merge***In case you move the `HEAD` in a commit that is not a direct parent of the branch that we want to merge, git, will verify the commit that is shared in between branches and compare it to the next commit in order to check if there will be some issue.
+- I merge possono essere di diverso tipo:
+  - **_FastForward_** spostando avanti il branch `master` portandolo ad agganciarsi all'ultimo commit del `secondo` branch.
+  - ***Three Way Merge*** in caso si sposti la `HEAD` in un branch che non sia direttamente a contatto con il branch che vogliamo unire, git, verificherà l'ultimo commit condiviso tra i due banches e lo comparerà alla commit per verificare che non ci siano incompatibilità.
 
-- In order to see which branch was merged we can use &rarr; `git branch --merged`
+- Per vedere i branches che sono stati uniti &rarr; `git branch --merged`
 
-- If we don't need anymore a specific branch we can remove it by using &rarr; `git branch -d [branch name]`
+- Se non ci serve più uno specifico branch possiamo rimuoverlo con &rarr; `git branch -d [nome branch]`
 
->***NOTICE:*** that if the branch was not already merged we can force the delete with uppercase `-D` parameter
+>***DA NOTARE:*** che se i branches non sono ancora stati uniti, possiamo forzarne la rimozione ugualmente, (perdendo il contenuto) con il paramentro in maiuscolo `-D`.
 
-- In case we want to undo some merge we can use &rarr; `git merge --abort`
+- Se vogliamo annullare un merge usiamo &rarr; `git merge --abort`
 
-- If we want to move and in the same time create a branch we can use &rarr; `git checkout -b [new branch name]`
+- Se vogliamo muovere la `HEAD` e allo stesso tempo creare il banch di destinazione usiamo &rarr; `git checkout -b [nome nuovo branch]`
 <br>
 <br>
 
-## 🏊🏻‍♂️ Use Remote server as repository store GitHub
+## 🏊🏻‍♂️ Usare un server Remoto come GitHub
 
-- Once that we made a GitHub account we can set the origin address with &rarr; `git remote add origin [address]`
+- Dopo aver creato un account GitHub possiamo settare l'URL dell'`origin` con &rarr; `git remote add origin [URL]`
 
-- To upload our local repository to the server provided by GitHub we need to type &rarr; `git push -u origin master`
+- Per caricare la nostra repo Locale sul nostro server usiamo &rarr; `git push -u origin master`
 
-- In order to see the list of our Remote origin, we can type &rarr; `g remote` this will show the origin and, if we add `-v` parameter we can even see the address.
+- Per vedere la lista delle nostre `origin` &rarr; `g remote` se aggiungiamo il parametro `-v` vedremo anche gli URL.
 
-- In order to inspect the Remote origin and check if our Local or our Remote is *up to date* and other info, we can simply type &rarr; `git remote show origin`
+- Per ispezionare l'`origin` Remota e controllare se la nostra repo Locale è *aggiornata* rispetto a quella Remota ed altre info, usiamo &rarr; `git remote show origin`
 
-- if we want to rename our Remote server &rarr; `git remote rename origin [new name]`
+- Se vogliamo rinominare l'`origin` del nostro Remote server &rarr; `git remote rename origin [nuovo nome]`
 
-- if we want to remove our Remote server &rarr; `git remote remove origin`
+- Rimuovere l'`origin` del nostro Remote server &rarr; `git remote remove origin`
 
-- In order to get the files from our Remote repo to our Local repo, we need to type &rarr; `git fetch or git pull`
+- Per ottenere i files dalla repo Remota direttamente sulla repo Locale usiamo &rarr; `git fetch or git pull`
 
-With the command `git fetch` we can get all the changes from the Remote repo, but only the changes non the files, to get even the files we need to merge our local branch with the origin by usin `git merge origin/master`. 
+Con il comando `git fetch` otteniamo la lista di tutti i cambiamenti, ma solo la lista non i files fisici, per avere i files dobbiamo unire il nostro branch Locale con l'`origin` Remota usando `git merge origin/master`. 
 
-- Otherwise we can do all of that in one command, get the info and the sync from the Remote repo and also the files by using &rarr; `git pull`
+- Altrimenti, possiamo fare tutto in un comando solo, ottenere direttamente i files aggiornati usando &rarr; `git pull`
   
-- If we want to clone one online existing repo we need to use &rarr; `git clone [URL]`.
+- Se vogliamo clonare, in Locale, una repo esistente online &rarr; `git clone [URL]`.
 <br>
 <br>
 
-## 👨🏼‍🏭 Fork a someone else repository
+## 👨🏼‍🏭 Fare il 'Fork' di una repo di terze parti
 
-Once that we have forked the repository into our account we can easily clone it as a normal repo with `git clone [URL]`.
+Una volta effettuato il Fork direttamente sul sito (GitHub) possiamo clonare in Locale la repo in maniera classica con `git clone [URL del Fork]`.
 
-After that we have made some changes to the repo, we can contribute to the original repo by asking to the owner the permission to contribute with our new forked repo.
-We can do that directly from GitHub.
+Dopo aver fatto qualche modifica alla repo 'Forkata', possiamo contribuire con le nostre modifiche alla repo originale chiedendo il permesso al proprietario.
+Questo può essere fatto direttamente da GitHub.
 
-- If we want (and the owner allow us) we can add the remote URL of the original repo into the `origin` of our forked repo &rarr; `git remote add [alias] [URL of the original repo]`
+- Se vogliamo (e se il proprietario ce lo permette) possiamo aggiungere l'URL della repo originale nell'`origin` alla nostra repo 'forkata' &rarr; `git remote add [alias] [URL della repo originale]`
 
-- Every time that someone push something in the original repo, we can easily sync our forked repo in order to keep it up to date &rarr; `git fetch [alias] and git merge [alias]/[branch]` or we directly pull &rarr; `git pull [alias] [branch]`
+- Ogni volta che il proprietario aggiunge o modifica qualcosa nella repo originale, possiamo sincronizzare la nostra 'Forked' repo per tenerla aggiornata &rarr; `git fetch [alias]` e `git merge [alias]/[nome branch]` o possiamo usare direttamente &rarr; `git pull [alias] [nome branch]`
 
-once that our Local repo is up to date we can simply `git push` those changes to the Remote repo (the forked one).
+quanto il nostro repo in Locale è aggiornato possiamo usare `git push` per caricare i cambiamenti alla repo in Remoto (la repo 'Forkata').
 <br>
 <br>
 
 ## 🛀🏼 Bonus
 
-Command that allows the user to use VSCode as editor for the commit message &rarr; `git config --global core.editor "code --wait"`
+Comando che consente di usare VSCode come editor predefinito per i messaggi delle commit &rarr; `git config --global core.editor "code --wait"`
