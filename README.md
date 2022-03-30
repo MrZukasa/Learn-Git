@@ -1,4 +1,4 @@
-<h1 align="center">🏗️ Git Commands</h1>
+# 🏗️ Git Commands
 
 - In order to check if we already have git on our system type &rarr; `git --version`
 
@@ -15,8 +15,6 @@
 - To commit the changes use &rarr; `git commit -m "[commit message]" -m "[commit description]"`
 
 - In order to avoid to use `git add` before the commit we can do something like &rarr; `git commit -am "[commit message]"` where the `-a` parameter stand for 'all'
-
-<hr>
 
 - Remove file from the index (Staging area) &rarr; `git restore --staged [filename.extension]`
 
@@ -38,11 +36,13 @@
   
   - `git reset --hard` &rarr; this remove the commit and all the added files in the last commit, this will remove the file physically &rarr; ***TL:DR: Remove the commit, the stage area and delete the files!***
 
-***NOTICE:*** we can use `git reset --[parameter]` with the id of the commit or the `HEAD` and the position of the commit that we want to refer to, like so: `git reset --[parameter] HEAD~1` in case we need 1 position before the `HEAD` pointer, or `git reset --[parameter] HEAD~2` in case we need to go back of 2 commits before the `HEAD`.
+>***NOTICE:*** we can use `git reset --[parameter]` with the id of the commit or the `HEAD` and the position of the commit that we want to refer to, like so: `git reset --[parameter] HEAD~1` in case we need 1 position before the `HEAD` pointer, or `git reset --[parameter] HEAD~2` in case we need to go back of 2 commits before the `HEAD`.
 
 In order to remove file from the `git add .` we need to set a `.gitignore` file which will contains all the file, extensione and folder that we need to avoid to commit, also we can apply a rule to allow a single file of a specified denied extension.
+<br/>
+<br/>
 
-<h2 align="center">🦺 Branch</h2> 
+## 🦺 Branch
 The common way to use a branch is to keep the stable version of the software as a main branch, and all the other features that are experimental or that can comport some bug fixing or even make the software to be unstable, are destinated to be stored in some side branch.
 
 The `master` name is made by initialize the folder to our repository.
@@ -83,15 +83,15 @@ To do that we need to use &rarr; `git merge`
 
 - If we don't need anymore a specific branch we can remove it by using &rarr; `git branch -d [branch name]`
 
-***NOTICE:*** that if the branch was not already merged we can force the delete with uppercase `-D` parameter
+>***NOTICE:*** that if the branch was not already merged we can force the delete with uppercase `-D` parameter
 
 - In case we want to undo some merge we can use &rarr; `git merge --abort`
 
 - If we want to move and in the same time create a branch we can use &rarr; `git checkout -b [new branch name]`
+<br>
+<br>
 
-<hr/>
-
-<h2 align="center">🏊🏻‍♂️ Use Remote server as repository store GitHub</h2>
+## 🏊🏻‍♂️ Use Remote server as repository store GitHub
 
 - Once that we made a GitHub account we can set the origin address with &rarr; `git remote add origin [address]`
 
@@ -111,11 +111,12 @@ With the command `git fetch` we can get all the changes from the Remote repo, bu
 
 - Otherwise we can do all of that in one command, get the info and the sync from the Remote repo and also the files by using &rarr; `git pull`
   
-- If we want to clone one online existing repo we need to use &rarr; `git clone [URL]`
+- If we want to clone one online existing repo we need to use &rarr; `git clone [URL]`.
+<br>
+<br>
 
-<hr />
+## 👨🏼‍🏭 Fork a someone else repository
 
-<h2 align="center">👨🏼‍🏭 Fork a someone else repository</h2>
 Once that we have forked the repository into our account we can easily clone it as a normal repo with `git clone [URL]`.
 
 After that we have made some changes to the repo, we can contribute to the original repo by asking to the owner the permission to contribute with our new forked repo.
@@ -125,8 +126,10 @@ We can do that directly from GitHub.
 
 - Every time that someone push something in the original repo, we can easily sync our forked repo in order to keep it up to date &rarr; `git fetch [alias] and git merge [alias]/[branch]` or we directly pull &rarr; `git pull [alias] [branch]`
 
-once that our Local repo is up to date we can simply `git push` those changes to the Remote repo (the forked one)
+once that our Local repo is up to date we can simply `git push` those changes to the Remote repo (the forked one).
+<br>
+<br>
 
-<h2 align="center">Bonus 🛀🏼</h2>
+## 🛀🏼 Bonus
 
 Command that allows the user to use VSCode as editor for the commit message &rarr; `git config --global core.editor "code --wait"`
