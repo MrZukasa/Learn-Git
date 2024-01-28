@@ -1,0 +1,12 @@
+{
+  "name": "learn-git",
+  "version": "1.0.0",
+  "description": "- Per controllare se abbiamo già installato Git sul nostro sistema si usa &rarr; `git --version`\r - Per inizializzare una repository all'interno di una cartella &rarr; `git init`\r - Creare un nuovo file all'interno di una repo &rarr; `touch [filename.extension]`\r - Vedere il contenuto di un file &rarr; `cat [filename.extension]`\r - Vedere lo status della nostra repository &rarr; `git status`\r - Aggiunge all'index di git (Staging area) tutti o alcuni files &rarr; `git add .` o `git add [nomefile.estensione]` o `git add [*.estensione]`\r - Per fare una commit &rarr; `git commit -m \"[messaggio di commit]\" -m \"[descrizione del commit]\"`\r - Per evitare di usare `git add` prima di ogni commit, possiamo optare per &rarr; `git commit -am \"[messaggio di commit]\"` dove il parametro `-a` sta per 'all'.\r - Togliere dei file dall'index di git (Staging area) &rarr; `git restore --staged [filename.extension]`\r - Per vedere lo storico delle varie commits &rarr;`git log`\r - Vedere il contenuto del file HEAD e quindi sapere dove punta &rarr; `cat .git/HEAD`\r - Vedere lo storico delle commits in maniera più minimale &rarr; `git log --oneline`\r - Recupera i cambiamenti emessi dall'ultima commit facendone una nuova &rarr; `git revert`\r - Per cambiare il messaggio dell'ultima commit &rarr; `git commit --amend -m \"message\"`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

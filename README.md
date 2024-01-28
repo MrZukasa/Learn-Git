@@ -48,6 +48,8 @@ Per evitare che con il comando `git add .` si inseriscano nella Staging Area tut
 - per rimuovere i branches deletati dal repo si usa `git fetch origin --prune`
 - per vedere solo i file dove ci sono differenze si usa `git diff --numstat`
 - per creare un branch da un commit si fa `git branch branch_name commit-hash` oppure `git branch branch_bane HEAD~3`
+- per pulire la directory dalla roba che rimane dopo aver revertato un commit si usa `git clean -fd`
+- per cercare le occorrenze di un commit in uno specifico ramo si fa `git for-each-ref --contains <commit hash> | grep -e <branchName>`
 
 ## 🦺 Branch
 
